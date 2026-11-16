@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Legendary League of Legends Teams</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f7f7f2;
+      color: #222222;
+      text-align: center;
+    }
+
+    /* Khung hiển thị ảnh lớn */
+    #image {
+      width: 80%;
+      max-width: 700px;
+      height: 400px;
+      margin: 0 auto 20px;
+      border: 4px solid #1f3a5f;
+      border-radius: 12px;
+      background-color: #ffffff;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #1f3a5f;
+    }
+
+    /* Dải ảnh nhỏ */
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .preview {
+      width: 150px;
+      height: 110px;
+      object-fit: cover;
+      border: 3px solid #1f3a5f;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .preview:hover,
+    .preview:focus {
+      border-color: #f4b942;
+      outline: 3px solid #f4b942;
+      outline-offset: 3px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Legendary League of Legends Teams</h1>
+
+  <div id="image">
+    Hover over an image below to display here.
+  </div>
+
+  <div class="gallery">
+
+    <img class="preview" src="images/t1.jpg" alt="T1" tabindex="0" onmouseover="upDate(this)" onmouseout="unDo()"
+      onfocus="upDate(this)" onblur="unDo()">
+
+
+    <img class="preview" src="images/geng.jpg" alt="Gen.G" onmouseover="upDate(this)" onmouseout="unDo()"
+      onfocus="upDate(this)" onblur="unDo()">
+
+
+    <img class="preview" src="images/g2.jpg" alt="G2 Esports" onmouseover="upDate(this)" onmouseout="unDo()"
+      onfocus="upDate(this)" onblur="unDo()">
+
+
+    <img class="preview" src="images/fnatic.jpg" alt="Fnatic" onmouseover="upDate(this)" onmouseout="unDo()"
+      onfocus="upDate(this)" onblur="unDo()">
+
+
+    <img class="preview" src="images/edg.jpg" alt="EDward Gaming" onmouseover="upDate(this)" onmouseout="unDo()"
+      onfocus="upDate(this)" onblur="unDo()">
+
+
+    <img class="preview" src="images/c9.jpg" alt="Cloud9" onmouseover="upDate(this)" onmouseout="unDo()"
+      onfocus="upDate(this)" onblur="unDo()">
+
+
+  </div>
+
+  <!-- Giữ nguyên phần JavaScript hiện tại của bạn ở bên dưới -->
+
+  <script>
+    // Bước 3: hàm upDate - chạy khi chuột đi vào một ảnh nhỏ
+    function upDate(previewPic) {
+      // 3a. Kiểm tra sự kiện có chạy không
+      console.log("upDate was called");
+
+      // 3b. In thông tin của ảnh
+      console.log(previewPic.alt);
+      console.log(previewPic.src);
+
+      // 3c. Đổi chữ của div có id "image" thành alt của ảnh
+      document.getElementById("image").innerHTML = previewPic.alt;
+
+      // 3e. Đổi ảnh nền của div có id "image" thành ảnh đang trỏ vào
+      document.getElementById("image").style.backgroundImage =
+        "url(" + previewPic.src + ")";
+    }
+
+    // Bước 4: hàm unDo - chạy khi chuột rời khỏi ảnh nhỏ
+    function unDo() {
+      console.log("unDo was called");
+
+      // 4a. Trả ảnh nền về giá trị ban đầu
+      document.getElementById("image").style.backgroundImage = "url('')";
+
+      // 4b. Trả chữ về nội dung ban đầu
+      document.getElementById("image").innerHTML =
+        "Hover over an image below to display here.";
+
+
+      // Bước 8: Lắng nghe sự kiện khi trang web tải xong
+      window.addEventListener("load", addTabIndex);
+
+      // Bước 9: Hàm thêm thuộc tính tabindex cho các hình ảnh
+      function addTabIndex() {
+
+        // 9a. Kiểm tra hàm có được gọi hay không
+        console.log("addTabIndex was called");
+
+        // 9b. Lấy tất cả hình ảnh có class preview
+        let images = document.querySelectorAll(".preview");
+
+        // 9c. Duyệt qua từng hình ảnh và thêm tabindex
+        for (let i = 0; i < images.length; i++) {
+          images[i].setAttribute("tabindex", "0");
+        }
+      }
+
+    }
+  </script>
+</body>
+
+</html>
